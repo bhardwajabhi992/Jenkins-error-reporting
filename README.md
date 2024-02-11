@@ -32,3 +32,9 @@ Sending a Slack Message:
 Imagine you have a magic messenger bird (let’s call it Slack Bird).
 When the cake burns, the Slack Bird flies to your team’s Slack channel and says, “Hey, the cake failed!”
 In our script, we use the slackSend command to send this message to Slack.
+
+
+### Alternative approach ###
+Rather than using the simple groovy code, you can achieve the same task with the help of shell scripting or optimizing the individual build steps with the pipeline.  
+
+
