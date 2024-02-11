@@ -17,13 +17,17 @@ In order to understand with a daily life example,
 
 What’s a Jenkins Pipeline?
 Imagine you’re baking a cake. A Jenkins pipeline is like a recipe for baking that cake. It tells Jenkins (our kitchen helper) what steps to follow to build and test your software.
+
 The Stages: Think of stages as different parts of the recipe. For example:
+
 “Run Tests” is like the step where you mix ingredients and put the cake in the oven.
 Inside this stage, you’d run your software tests (like checking if the cake is baked properly).
 What Happens When Things Go Wrong?
+
 Sometimes the cake doesn’t turn out perfect. Similarly, in software, things can fail (tests might not pass).
 Our recipe has a special section called “post” that handles failures.
 If the tests fail (like a burnt cake), we want to notify someone.
+
 Sending a Slack Message:
 Imagine you have a magic messenger bird (let’s call it Slack Bird).
 When the cake burns, the Slack Bird flies to your team’s Slack channel and says, “Hey, the cake failed!”
