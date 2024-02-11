@@ -1,0 +1,19 @@
+pipeline {          // Creating Jenkins pipeline using the pipeline block
+    agent any       // Using any ensure it can run on any available agent or we can give particular resource name to run the test upon
+    stages {        // Stage are defined in order to include the steps to execute the test suite (we can setup running the project on local instance or browserstack)
+        stage('Run Tests') { // This is a single stage and can add n number of stages as required by the project
+            steps {
+                    // Your test execution steps (e.g., running tests on BrowserStack) will be called here
+            }
+        }
+    }
+    post {          // Define actions that needs to be done after the stages complete
+        failure {   // In case whenever the build fails
+            script {    // Groovy script to know when the test fails and post a messgae on the slack
+                def userIds = slackUserIdsFromCommitters() //function to get userIDs of the user who is going to post on Slack
+                def userIdsString = userIds.collect { "<@$it>" }.join(' ') 
+                slackSend(color: 'danger', message: "<@$userIds>Error in build ${env.JOB_NAME}") // message to the Slack channel with a red color to attrtact attention and includes the error message and the build name.
+            }
+        }
+    }
+}
