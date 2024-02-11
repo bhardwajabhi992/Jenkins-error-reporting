@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Run Tests') {
+            steps {
+                sh 'your-test-command-here' // Replace with actual test command
+            }
+        }
+    }
+    post {
+        failure {
+            script {
+                def userIds = slackUserIdsFromCommitters()
+                def userIdsString = userIds.collect { "<@$it>" }.join(' ')
+                slackSend(color: 'danger', message: "<@$userIds> Error in build ${env.JOB_NAME}")
+            }
+        }
+    }
+}
+
